@@ -55,6 +55,22 @@ Lo que no cambia:
 
 ### 1. Causación, con aprobación antes del libro
 
+Al inicio, la causación automática sería con IA. La herramienta que estamos mirando es Cifrato: sincroniza las compras con la DIAN, sugiere la causación y las sube a Siigo. Alguien de tu equipo revisa antes de confirmar. Más adelante podemos desarrollar esa misma causación, para que quede inmediata y para bajar el costo de la herramienta.
+
+Pantallas del [tutorial público de Cifrato](https://cifrato.ai/blog/como-causar-facturas-mas-rapido). Las empresas que aparecen son las del ejemplo, no las de Taxplan.
+
+Resumen del mes: cuántas facturas autocompletó la IA y cuántas ya se subieron a Siigo.
+
+![Resumen de Cifrato: facturas autocompletadas por IA y botón para sincronizar compras con la DIAN](img/cifrato-resumen.png)
+
+Detalle de una factura. La IA propone tipo de documento, forma de pago y centro de costo. Se puede recalcular o corregir antes de subirla.
+
+![Factura en Cifrato con parámetros sugeridos por la IA y botón para subirla a Siigo](img/cifrato-factura.png)
+
+Confirmación para subir el lote a Siigo.
+
+![Ventana de Cifrato con las facturas listas para subir a Siigo](img/cifrato-subir.png)
+
 La factura electrónica llega con su XML. El sistema lee proveedor, fecha, valores e impuestos y deja un borrador. Alguien de tu equipo lo corrige si hace falta y lo confirma. En la localización de Colombia, la factura queda con su estado ante la DIAN y se puede descargar el XML aceptado.
 
 Estado del documento electrónico en la factura:
