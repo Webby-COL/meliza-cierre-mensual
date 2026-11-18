@@ -36,7 +36,7 @@ Siigo Contador se queda como libro. En Siigo Contador la factura electrónica se
 
 | Dolor | Qué hace el agente | Solución propuesta |
 |---|---|---|
-| Causar compras, ventas y documento soporte a mano | Trae compras y ventas de la DIAN, incluye notas y documento soporte, propone cuenta, IVA y retención según el régimen del tercero, guarda número de factura y NIT, y deja el soporte ligado | El comprobante queda armado en Siigo y no se contabiliza si falta el NIT, si el CUFE ya existe, si la nota crédito ya anuló ese valor, si en una compra a crédito faltan el acuse y el recibo del bien, o si nadie lo aprobó |
+| Causar compras, ventas y documento soporte a mano | Recibe el documento al arrastrarlo, desde la nube o desde un escáner con vista previa. La visión artificial lo clasifica. Trae también compras y ventas de la DIAN, incluye notas y documento soporte, propone cuenta, IVA y retención según el régimen del tercero, guarda número de factura y NIT, y deja el soporte ligado | El comprobante queda armado en Siigo y no se contabiliza si falta el NIT, si el CUFE ya existe, si la nota crédito ya anuló ese valor, si en una compra a crédito faltan el acuse y el recibo del bien, o si nadie lo aprobó |
 | Conciliar con resaltador | Lee el extracto en Siigo, cruza contra el auxiliar y separa lo que coincide de lo que no | Comisión y GMF se cierran con una regla. Un pago a 30, 60, 80 o 90 días, un anticipo o un valor sin pareja quedan para una persona |
 | Pedir soportes dos veces al mes, y no ver cómo va cada empresa | Compara la DIAN, lo recibido y lo causado, le manda a cada cliente solo lo que le falta, y deja el estado de cada empresa en la semana de su cierre | Un recordatorio por empresa con la lista exacta de faltantes, y una lista con lo causado, lo conciliado y lo pendiente. No insiste sobre un documento que ya está causado |
 | Reembolso de caja desde la foto | Lee el recibo y arma las líneas con el total | El borrador entra cuando alguien verifica que el total cuadra |
@@ -45,19 +45,20 @@ Siigo Contador se queda como libro. En Siigo Contador la factura electrónica se
 
 ```mermaid
 flowchart LR
-    A["Soportes y Excel DIAN"] --> B["La IA arma compras, ventas, notas y documento soporte"]
-    B --> C["Alguien de tu equipo aprueba"]
-    C --> D["Siigo Contador"]
-    D --> E["Conciliación del extracto en Siigo"]
-    E --> F["Borrador de impuestos"]
-    F --> G["Meliza revisa, presenta y paga"]
+    A["Arrastrar, nube, escáner o Excel DIAN"] --> B["La visión artificial clasifica el documento"]
+    B --> C["La IA arma la causación"]
+    C --> D["Alguien de tu equipo aprueba"]
+    D --> E["Siigo Contador"]
+    E --> F["Conciliación del extracto en Siigo"]
+    F --> G["Borrador de impuestos"]
+    G --> H["Meliza revisa, presenta y paga"]
 ```
 
 ## Las automatizaciones, una por una
 
-### 1. Causación desde la DIAN
+### 1. Causación de los documentos
 
-La causación automática sincroniza los documentos con la DIAN, sugiere la causación y los sube a Siigo. Entra la compra, la venta, la nota crédito, la nota débito y el documento soporte. El documento soporte es la cuenta de cobro que no es factura: se procesa para que la DIAN la vea. En cada documento se guardan el número y el NIT, y queda ligado al soporte, sea el XML o el físico. A fin de año, si un medio magnético no cuadra, se puede volver a ese soporte. La exógena no se construye en esta etapa.
+La causación de los documentos entra por cuatro caminos. Se arrastra y se suelta el archivo. Se toma de la nube donde ya está. Se escanea con vista previa de la hoja, como en Vista Previa: se ve la página y después se guarda. Y, cuando el documento ya está en la DIAN, se sincroniza desde ahí. La visión artificial clasifica cada archivo —factura, nota, documento soporte o recibo— y con eso se sugiere la causación y se sube a Siigo. Entra la compra, la venta, la nota crédito, la nota débito y el documento soporte. El documento soporte es la cuenta de cobro que no es factura: se procesa para que la DIAN la vea. En cada documento se guardan el número y el NIT, y queda ligado al soporte, sea el XML o el físico. A fin de año, si un medio magnético no cuadra, se puede volver a ese soporte. La exógena no se construye en esta etapa.
 
 La retención no sale solo del régimen de tu cliente. Sale de la calidad de la otra parte: régimen simple, gran contribuyente o autorretenedor. Si esa calidad no está identificada, la retención queda marcada y no se liquida sola.
 
@@ -82,13 +83,12 @@ Tú comparas el borrador con el formulario. El agente no presenta ni paga.
 
 ### 4. Soportes por cliente y recordatorios
 
-Cada cliente tiene un espacio propio, por NIT. Ve y carga solo sus documentos. Antes de cada cierre recibe la lista exacta de lo que falta, no un mensaje general. En la semana de cierre de cada empresa se ve qué está causado, qué está conciliado y qué sigue pendiente. Arrastrar y soltar los archivos puede esperar. El espacio separado, no.
+Cada cliente tiene un espacio propio, por NIT. Ve y carga solo sus documentos: los arrastra, los deja en la nube o los escanea. Antes de cada cierre recibe la lista exacta de lo que falta, no un mensaje general. En la semana de cierre de cada empresa se ve qué está causado, qué está conciliado y qué sigue pendiente.
 
 ### 5. Lo que puede ir después
 
 No cambia la declaración. Queda para cuando la primera etapa ya corra con unas pocas empresas:
 
-- Arrastrar y soltar los soportes.
 - Un tablero para que el cliente vea en qué va su mes.
 - Causación inmediata, sin esperar el lote, y con menor costo.
 
