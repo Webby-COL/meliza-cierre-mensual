@@ -1,16 +1,18 @@
 # Cierre mensual de Taxplan: lo que entendimos
 
 **Para:** Meliza Ramírez Granados, Taxplan Consulting SAS
+
 **De:** David Vargas y Julián, Webby
+
 **Fecha:** 18 de noviembre de 2026
 
-Meliza, gracias por la conversación del 5 de noviembre. Esta página resume cómo entendimos tu cierre mensual, qué proponemos para cada dolor y qué necesitamos ver en una empresa.
+Meliza, gracias por la conversación del 5 de noviembre. Esta página resume cómo entendimos tu cierre mensual, qué proponemos para cada dolor y qué nos gustaría ver en uno de tus clientes para ajustarlo mejor.
 
-No es un precio. Siigo Contador sigue siendo tu libro. Lo que proponemos es una consultoría para automatizar los dolores principales, empezando por una empresa, sin cambiar de sistema.
+No es un precio. Lo que proponemos es una consultoría para automatizar los procesos alrededor del cierre, empezando por una empresa. Siigo Contador sigue siendo tu libro. Si hace falta otra herramienta además de Siigo, lo definimos en la implementación y se refleja en la cotización.
 
 ## Cómo cierra el mes hoy
 
-Los soportes llegan por WhatsApp, correo, físico o USB. En paralelo, el reporte de la DIAN trae en Excel las compras y las ventas. El equipo digita las dos cosas, cruza en Excel, pide lo que falta y concilia el banco. Los cierres empiezan hacia el día 9 del mes siguiente. El día exacto para presentar lo da el último dígito del NIT.
+Los soportes llegan por WhatsApp, correo, físico o USB. En paralelo, el reporte de la DIAN trae en Excel las compras y las ventas. El equipo digita las dos cosas, cruza en Excel, pide lo que falta y concilia el banco. Los cierres se hacen a más tardar el día 9 del mes siguiente. El día exacto para presentar lo da el último dígito del NIT.
 
 ```mermaid
 flowchart LR
@@ -105,7 +107,7 @@ No cambia la declaración. Queda para cuando la primera etapa ya corra con unas 
 
 La primera etapa sería con cinco o seis empresas, no con todas.
 
-## Qué necesitamos ver en una empresa
+## Qué nos gustaría ver en uno de tus clientes
 
 Con una empresa en pantalla, y un mes, nos alcanza. Si no tienes el mes cerrado a la mano, vemos lo que tengas.
 
