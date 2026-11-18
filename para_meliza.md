@@ -45,7 +45,7 @@ Siigo Contador se queda como libro. En Siigo Contador la factura electrónica se
 
 ```mermaid
 flowchart LR
-    A["Soportes y Excel DIAN"] --> B["Cifrato arma compras, ventas, notas y documento soporte"]
+    A["Soportes y Excel DIAN"] --> B["La IA arma compras, ventas, notas y documento soporte"]
     B --> C["Alguien de tu equipo aprueba"]
     C --> D["Siigo Contador"]
     D --> E["Conciliación del extracto en Siigo"]
@@ -57,27 +57,13 @@ flowchart LR
 
 ### 1. Causación desde la DIAN
 
-Cifrato sincroniza los documentos con la DIAN, sugiere la causación y los sube a Siigo. Entra la compra, la venta, la nota crédito, la nota débito y el documento soporte. El documento soporte es la cuenta de cobro que no es factura: se procesa para que la DIAN la vea. En cada documento se guardan el número y el NIT, y queda ligado al soporte, sea el XML o el físico. A fin de año, si un medio magnético no cuadra, se puede volver a ese soporte. La exógena no se construye en esta etapa.
+La causación automática sincroniza los documentos con la DIAN, sugiere la causación y los sube a Siigo. Entra la compra, la venta, la nota crédito, la nota débito y el documento soporte. El documento soporte es la cuenta de cobro que no es factura: se procesa para que la DIAN la vea. En cada documento se guardan el número y el NIT, y queda ligado al soporte, sea el XML o el físico. A fin de año, si un medio magnético no cuadra, se puede volver a ese soporte. La exógena no se construye en esta etapa.
 
 La retención no sale solo del régimen de tu cliente. Sale de la calidad de la otra parte: régimen simple, gran contribuyente o autorretenedor. Si esa calidad no está identificada, la retención queda marcada y no se liquida sola.
 
 En una compra a crédito, el costo y el IVA descontable dependen del acuse y del recibo del bien. Si esos eventos no están, el documento queda marcado y no se toma como soporte. Una nota crédito disminuye o anula la factura: el valor anulado deja de ser soporte.
 
-Alguien de tu equipo revisa antes de confirmar. Más adelante podemos desarrollar esa misma causación para que quede inmediata y para bajar el costo de la herramienta.
-
-Las pantallas siguientes son del [tutorial público de Cifrato](https://cifrato.ai/blog/como-causar-facturas-mas-rapido). Muestran compras. Las ventas siguen el mismo camino. Las empresas que aparecen son las del ejemplo, no las de Taxplan.
-
-Resumen del mes: cuántas facturas autocompletó la IA y cuántas ya se subieron a Siigo.
-
-![Resumen de Cifrato: facturas autocompletadas por IA y botón para sincronizar compras con la DIAN](img/cifrato-resumen.png)
-
-Detalle de una factura. La IA propone tipo de documento, forma de pago y centro de costo. Se puede recalcular o corregir antes de subirla.
-
-![Factura en Cifrato con parámetros sugeridos por la IA y botón para subirla a Siigo](img/cifrato-factura.png)
-
-Confirmación para subir el lote a Siigo.
-
-![Ventana de Cifrato con las facturas listas para subir a Siigo](img/cifrato-subir.png)
+Alguien de tu equipo revisa antes de confirmar. Más adelante podemos desarrollar esa misma causación para que quede inmediata y baje el costo.
 
 ### 2. Conciliación bancaria
 
@@ -132,7 +118,7 @@ Con una empresa en pantalla, y un mes, nos alcanza. Si no tienes el mes cerrado 
 
 1. Nos reunimos una vez, con una empresa en pantalla.
 2. Vemos la conciliación con extracto dentro de Siigo Contador.
-3. Probamos la causación con Cifrato en esa empresa, sin cambiar el libro.
+3. Probamos la causación automática en esa empresa, sin cambiar el libro.
 4. Te enviamos la propuesta de consultoría por dolor, con precio.
 
 Si algo de esta página no coincide con tu operación, dínoslo y lo corregimos.

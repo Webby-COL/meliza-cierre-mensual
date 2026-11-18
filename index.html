@@ -44,13 +44,13 @@ footer { max-width: 820px; margin: 0 auto; padding: 0 20px 40px; color: #5d6f66;
 <h2 id="cómo-cierra-el-mes-hoy">Cómo cierra el mes hoy</h2>
 <p>Los soportes llegan por WhatsApp, correo, físico o USB. En paralelo, el reporte de la DIAN trae en Excel las compras y las ventas. El equipo digita las dos cosas, cruza en Excel, pide lo que falta y concilia el banco. Los cierres empiezan hacia el día 9 del mes siguiente. El día exacto para presentar lo da el último dígito del NIT.</p>
 <pre class="mermaid">flowchart LR
-    A[&quot;Cliente envía soportes&quot;] --> B[&quot;Equipo digita compras y ventas&quot;]
-    B --> C[&quot;Siigo Contador&quot;]
-    D[&quot;Excel DIAN: compras y ventas&quot;] --> E[&quot;Cruce en Excel&quot;]
-    C --> E
-    E --> F[&quot;Pide lo que falta&quot;]
-    F --> A
-    E --> G[&quot;Banco y formularios&quot;]</pre>
+    A[&quot;Cliente envía soportes&quot;] --&gt; B[&quot;Equipo digita compras y ventas&quot;]
+    B --&gt; C[&quot;Siigo Contador&quot;]
+    D[&quot;Excel DIAN: compras y ventas&quot;] --&gt; E[&quot;Cruce en Excel&quot;]
+    C --&gt; E
+    E --&gt; F[&quot;Pide lo que falta&quot;]
+    F --&gt; A
+    E --&gt; G[&quot;Banco y formularios&quot;]</pre>
 <p>El orden que nos contaste es este:</p>
 <ol type="1">
 <li><strong>Causar.</strong> Compras, ventas, notas crédito, notas débito y documento soporte. Cada una con su número, su NIT, su CUFE o CUDE, y el soporte ligado. La retención depende de la calidad tributaria del tercero. Sin NIT, ese gasto no se puede descontar.</li>
@@ -107,34 +107,18 @@ footer { max-width: 820px; margin: 0 auto; padding: 0 20px 40px; color: #5d6f66;
 </tbody>
 </table>
 <pre class="mermaid">flowchart LR
-    A[&quot;Soportes y Excel DIAN&quot;] --> B[&quot;Cifrato arma compras, ventas, notas y documento soporte&quot;]
-    B --> C[&quot;Alguien de tu equipo aprueba&quot;]
-    C --> D[&quot;Siigo Contador&quot;]
-    D --> E[&quot;Conciliación del extracto en Siigo&quot;]
-    E --> F[&quot;Borrador de impuestos&quot;]
-    F --> G[&quot;Meliza revisa, presenta y paga&quot;]</pre>
+    A[&quot;Soportes y Excel DIAN&quot;] --&gt; B[&quot;La IA arma compras, ventas, notas y documento soporte&quot;]
+    B --&gt; C[&quot;Alguien de tu equipo aprueba&quot;]
+    C --&gt; D[&quot;Siigo Contador&quot;]
+    D --&gt; E[&quot;Conciliación del extracto en Siigo&quot;]
+    E --&gt; F[&quot;Borrador de impuestos&quot;]
+    F --&gt; G[&quot;Meliza revisa, presenta y paga&quot;]</pre>
 <h2 id="las-automatizaciones-una-por-una">Las automatizaciones, una por una</h2>
 <h3 id="causación-desde-la-dian">1. Causación desde la DIAN</h3>
-<p>Cifrato sincroniza los documentos con la DIAN, sugiere la causación y los sube a Siigo. Entra la compra, la venta, la nota crédito, la nota débito y el documento soporte. El documento soporte es la cuenta de cobro que no es factura: se procesa para que la DIAN la vea. En cada documento se guardan el número y el NIT, y queda ligado al soporte, sea el XML o el físico. A fin de año, si un medio magnético no cuadra, se puede volver a ese soporte. La exógena no se construye en esta etapa.</p>
+<p>La causación automática sincroniza los documentos con la DIAN, sugiere la causación y los sube a Siigo. Entra la compra, la venta, la nota crédito, la nota débito y el documento soporte. El documento soporte es la cuenta de cobro que no es factura: se procesa para que la DIAN la vea. En cada documento se guardan el número y el NIT, y queda ligado al soporte, sea el XML o el físico. A fin de año, si un medio magnético no cuadra, se puede volver a ese soporte. La exógena no se construye en esta etapa.</p>
 <p>La retención no sale solo del régimen de tu cliente. Sale de la calidad de la otra parte: régimen simple, gran contribuyente o autorretenedor. Si esa calidad no está identificada, la retención queda marcada y no se liquida sola.</p>
 <p>En una compra a crédito, el costo y el IVA descontable dependen del acuse y del recibo del bien. Si esos eventos no están, el documento queda marcado y no se toma como soporte. Una nota crédito disminuye o anula la factura: el valor anulado deja de ser soporte.</p>
-<p>Alguien de tu equipo revisa antes de confirmar. Más adelante podemos desarrollar esa misma causación para que quede inmediata y para bajar el costo de la herramienta.</p>
-<p>Las pantallas siguientes son del <a href="https://cifrato.ai/blog/como-causar-facturas-mas-rapido">tutorial público de Cifrato</a>. Muestran compras. Las ventas siguen el mismo camino. Las empresas que aparecen son las del ejemplo, no las de Taxplan.</p>
-<p>Resumen del mes: cuántas facturas autocompletó la IA y cuántas ya se subieron a Siigo.</p>
-<figure>
-<img src="img/cifrato-resumen.png" alt="Resumen de Cifrato: facturas autocompletadas por IA y botón para sincronizar compras con la DIAN" />
-<figcaption aria-hidden="true">Resumen de Cifrato: facturas autocompletadas por IA y botón para sincronizar compras con la DIAN</figcaption>
-</figure>
-<p>Detalle de una factura. La IA propone tipo de documento, forma de pago y centro de costo. Se puede recalcular o corregir antes de subirla.</p>
-<figure>
-<img src="img/cifrato-factura.png" alt="Factura en Cifrato con parámetros sugeridos por la IA y botón para subirla a Siigo" />
-<figcaption aria-hidden="true">Factura en Cifrato con parámetros sugeridos por la IA y botón para subirla a Siigo</figcaption>
-</figure>
-<p>Confirmación para subir el lote a Siigo.</p>
-<figure>
-<img src="img/cifrato-subir.png" alt="Ventana de Cifrato con las facturas listas para subir a Siigo" />
-<figcaption aria-hidden="true">Ventana de Cifrato con las facturas listas para subir a Siigo</figcaption>
-</figure>
+<p>Alguien de tu equipo revisa antes de confirmar. Más adelante podemos desarrollar esa misma causación para que quede inmediata y baje el costo.</p>
 <h3 id="conciliación-bancaria">2. Conciliación bancaria</h3>
 <p>La conciliación se hace en Siigo, con el extracto del banco. El sistema compara cada movimiento contra el auxiliar y propone cuáles se pueden cerrar. Comisión y GMF entran por regla. Un pago a plazo, un anticipo o un valor sin pareja no entra solo al libro.</p>
 <h3 id="borrador-de-impuestos">3. Borrador de impuestos</h3>
@@ -179,7 +163,7 @@ footer { max-width: 820px; margin: 0 auto; padding: 0 20px 40px; color: #5d6f66;
 <ol type="1">
 <li>Nos reunimos una vez, con una empresa en pantalla.</li>
 <li>Vemos la conciliación con extracto dentro de Siigo Contador.</li>
-<li>Probamos la causación con Cifrato en esa empresa, sin cambiar el libro.</li>
+<li>Probamos la causación automática en esa empresa, sin cambiar el libro.</li>
 <li>Te enviamos la propuesta de consultoría por dolor, con precio.</li>
 </ol>
 <p>Si algo de esta página no coincide con tu operación, dínoslo y lo corregimos.</p>
